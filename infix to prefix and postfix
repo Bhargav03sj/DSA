@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<math.h>
 #include<string.h>
 #include<ctype.h>
 int precedence(char op){
@@ -42,7 +41,7 @@ char* convertinfixtopostfix(char* infixexp){
         }
     }
     while(top!=-1)
-    postfix[x++]=operator[top-1];
+    postfix[x++]=operator[top--];
     postfix[x]='\0';
     return postfix;
 }
@@ -50,18 +49,18 @@ char* convertinfixtoprefix(char* infixexp){
     int len =strlen(infixexp),top=-1,x=0;
     char* prefix=(char*)malloc(len+1);
     char operator[len];
-    for(int i=0;i<len;i++){
+    for(int i=len-1;i>=0;i--){
         char ch=infixexp[i];
         if(isalnum(ch)){
             prefix[x++] =ch;
         }
-        else if(ch=='+' || ch=='*' || ch=='/' || ch=='^'){
+        else if(ch=='+' || ch== '-'|| ch=='*' || ch=='/' || ch=='^'){
             while(top!=-1 && precedence(ch)<=precedence(operator[top]) && ch!='^')
             prefix[x++]=operator[top--];
-            operator[top++]=ch;
+            operator[++top]=ch;
         }
         else if(ch==')'){
-            operator[top++]=ch;
+            operator[++top]=ch;
         }
         else if(ch=='('){
             while(operator[top]!=')')
@@ -70,13 +69,13 @@ char* convertinfixtoprefix(char* infixexp){
         }
     }
     while(top!=-1)
-    prefix[x++]=operator[top-1];
+    prefix[x++]=operator[top--];
     prefix[x]='\0';
+    strrev(prefix);
     return prefix;
 }
 int main(){
     char infix[100];
-
     printf("Enter Infix Expression: ");
     scanf("%s", infix);
 
