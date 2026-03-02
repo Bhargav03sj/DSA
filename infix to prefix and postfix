@@ -101,7 +101,7 @@ char* convertpostfixtoinfix(char* postfixexp){
     strcpy(infix, stack[top]);
     return infix;
 }
-char* convertPrefixToInfix(char* prefixExp){
+char* convertprefixtoinfix(char* prefixExp){
     int len = strlen(prefixExp);
     int top = -1;
     char stack[100][100];
