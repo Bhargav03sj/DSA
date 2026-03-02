@@ -116,7 +116,7 @@ char* convertprefixtoinfix(char* prefixExp){
             strcpy(s1, stack[top--]);
             strcpy(s2, stack[top--]);
 
-            sprintf(stack[++top], "(%s%c%s)", s2, ch, s1);
+            sprintf(stack[++top], "(%s%c%s)", s1, ch, s2);
         }
     }
     char *infix = (char*)malloc(strlen(stack[top]) + 1);
