@@ -1,0 +1,68 @@
+#include<stdio.h>
+#define max 100
+int queue[max],front =-1,rear =-1;
+int isfull(){
+    return rear ==max-1;
+}
+int isempty(){
+    return rear ==max-1;
+}
+void emqueue(int data){
+    if(isfull()){
+        printf("Queue Overflow!!!\n");
+        return;
+    }
+    queue[rear++]=data;
+    if(front==-1)
+    front =rear;
+    printf("\n%d inserted in queue\n",data);
+}
+int dequeue(){
+    if(isempty()){
+        printf("\nQueue Underflow!!!\n");
+        return -1;
+    }
+    int val= queue[front++];
+    if(front>rear)
+    front=rear=-1;
+    return val;
+}
+int peek(){
+    if(isempty()){
+        printf("\nQueue is empty!!!\n");
+        return -1;
+}
+return queue[front];
+}
+void display(){
+     if(isempty()){
+        printf("\nQueue is empty!!!\n");
+        return;
+}
+for(int i=front;i<=rear;i++){
+    printf("%d ",queue[i]);
+}
+}
+int main(){
+    int choice,value;
+    while(1){
+        printf("1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Peek\n");
+        printf("4. Display\n");
+        printf("5. exit\n");
+        printf("Enter choice: ");
+        switch(choice){
+            case 1:
+            break;
+            case 2:
+            break;
+            case 3:
+            break;
+            case 4:
+            break;
+            case 5:
+            break;
+        }
+    }
+}
