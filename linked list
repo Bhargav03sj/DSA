@@ -6,7 +6,7 @@ struct Node{
 };
 struct Node *head = NULL;
 struct Node* createNode(int data){
-    struct Node* temp=(struct Node*)malloc(sizof(struct Node));
+    struct Node* temp=(struct Node*)malloc(sizeof(struct Node));
     temp->data=data;
     temp->next =NULL;
     return temp;
@@ -16,6 +16,34 @@ void insertinbeg(int data){
     newNode->next=head;
     head=newNode;
     print("Node inserted in beginning\n");
+}
+void insertnodeatend(int data){
+    struct Node* newNode =createNode(data);
+    if(head == NULL)
+    head = newNode;
+    else{
+        struct Node* temp= head;
+        while(temp->next !=NULL){
+            temp->next=newNode;
+        }
+        printf("Node Inserted");
+}
+}
+void insertatanypos(int data,int pos){
+    if(head == NULL)
+    printf("list is empty");
+else if(pos==0)
+insertinbeg(data);
+else{
+    struct Node* temp = head;
+    int i=0;
+    while(temp!=NULL){
+        if(i==pos-1)
+        break;
+        temp->next;
+    }
+    
+}
 }
 int main(){
     while(1){
