@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node{
+int data;
+int priority;
+struct Node* next;
+};
+struct Node* front=NULL,*rear=NULL;
+void enqueue(int data,int priority){
+  struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+  if(newNode==NULL)
+  printf("queue overflow\n");
+  else{
+    newNode->data=data;
+    newNode->priority=priority;
+    newNode->next=NULL;
+    if(rear==NULL)
+    rear=newNode;
+    else
+    rear->next=newNode;
+    if(front == NULL)
+    front=rear;
+    printf("element added in queue");
+  }
+}
+struct Node* gethighestpriority(){
+  struct Node* curr=front,*prev=NULL;
+  int max =0;
+  while(curr!=NULL){
+    if(curr->priority >max){
+      
+    }
+
+  }
+}
+int dequeue(){
+
+}
+int main(){
+    int choice,value;
+    while(1){
+        printf("1.enqueue\n");
+        printf("2.dequeue\n");
+        printf("3.peek\n");
+        printf("4.display queue\n");
+        printf("5.exit\n");
+        printf("enter choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+              printf("enter value: ");
+              scanf("%d",&value);
+              enqueue(value);
+              break;
+            case 2:
+              dequeue();
+              printf("element deleted\n");
+              break;
+            case 3:
+              peek();
+             printf("%d is available in the queue\n",value);
+             break;
+            case 4:
+             display();
+             break;
+            case 5:
+            exit(0);
+             break;
+            default:
+              printf("\ninvalid choice\n");
+
+        }
+
+    }
+
+
+    return 0;
+}
